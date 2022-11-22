@@ -1,0 +1,37 @@
+Handling Routing:
+    routes/
+     - On this dolder we have by defaylt 4 php files
+     - The one we're interested at begin in "web.php"
+       - On this we have definition of our routes!
+    
+    Creating a new get route:
+     - We create by using "Route class" and in this class we have a static method 
+       called:
+       - get(), which takes:
+         - "route"
+         -  handlerFundction => Thils will return our view!
+    
+
+    View:
+     - Our view can be an external view file, but here for now we can just return 
+       basic html markup
+    
+
+
+
+-- routes/web.php
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/home', function () {
+    return "<h1>Home page<h1>";
+});
+
+
+

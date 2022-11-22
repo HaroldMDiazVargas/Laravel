@@ -1,0 +1,57 @@
+Views in laravel
+    Definition:
+     - Views are what user sees, so is just our html markup
+     - Our views are stored in => resourcers/views/...
+     - Currently we must have our welcome.blade.php
+
+    blade.php extension:
+     - Blade is a template engine used in laravel
+     - This blade comes with a particular syntax; we can see things like:
+       @auth
+       @if
+       @endauth
+       ...
+       href="{{ ... }}
+    
+    Create a view:
+     - We create a new file with blade.php extension
+       e.g home.blade.php
+     - We add our html template markup
+    
+    Using/Bind in our route:
+     - We just need to return in our route using a function "view()"
+     - We can pass just "home" or the name of our file withour .blade.php ext
+
+
+
+
+-- routes/web.php
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/home', function () {
+    return view("home");
+});
+
+
+
+
+-- resources/views/home.blade.php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Home page</h1>    
+
+</body>
+</html>

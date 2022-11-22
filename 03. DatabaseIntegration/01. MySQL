@@ -1,0 +1,50 @@
+MySQL
+    Definition:
+     - By default Laravel creates a Database Connection with all params of MySQL 
+       running at port 3306(.env file)
+     - We can use these data to connect with any UI database management:
+       - MySQL Workbench
+       - TablePlus
+       - dbeaver
+       - sqlpro
+       - ...
+    
+    Connect DB:
+     - We just need to create a new connection and pass:
+        DB_CONNECTION=mysql
+        DB_HOST=mysql
+        DB_PORT=3306
+        DB_USERNAME=sail
+        DB_PASSWORD=password
+     - We must see two databases:
+       - first_app db
+       - testing db
+    
+    Create table in first_app db:
+     - We can just create our custom table
+     - We can add some data manually just for learning purposes
+    
+    Notes: We can change and define our custom database whcih can be whatever
+           - SQL, NoSQL!
+           
+
+-- -env file (db)
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=first_app
+DB_USERNAME=sail
+DB_PASSWORD=password
+
+
+
+-- query to create our table
+USE first_app;
+
+CREATE TABLE users(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL
+);
+
+

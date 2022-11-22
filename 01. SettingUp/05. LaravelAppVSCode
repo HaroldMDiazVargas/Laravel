@@ -1,0 +1,14 @@
+Visual Studio Code
+    Open our app:
+     - We just need to use the next command in our root laravel project
+       code .
+    
+    Useful extension:
+     - Laravel Blade Snippet
+     - Laravel Blade Spacer
+     - Php intelephense
+     - laravel goto view
+     - laravel Goto
+    
+
+

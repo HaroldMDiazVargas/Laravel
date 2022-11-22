@@ -1,0 +1,7 @@
+Working with database
+
+    Ways in Laravel:
+     1. Using raw SQL queries
+        - 
+     2. Query Builder
+     3. Eloquent ORM

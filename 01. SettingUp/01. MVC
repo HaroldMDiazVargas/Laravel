@@ -1,0 +1,28 @@
+MVC Architecture
+    Definition:
+     - Laravel is based on this Architecture
+     - Deal with apps to split them into three boxes
+    
+    MVC Architecture:
+     Models:
+      - Contains all the logic related to the app data:
+        - schemas
+        - databases
+        - ..
+      - Here we write the part to intereact with the database
+     Views:
+      - Contains the user interface
+      - All component we see in web page
+     Controllers:
+      - Connects what the Models with the Views
+
+    Summary:
+     - User interacts with the webpage => View
+     - Controller takes input from view, uses some logic to translate 
+       that input into a request for Model
+     - Model then grabs data from database
+     - Controller passes data to view => update the view
+    
+    Benefits:
+     - Maintain app easy to maintain
+     - Avoid code repetition

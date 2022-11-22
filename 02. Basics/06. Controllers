@@ -1,0 +1,59 @@
+Controllers
+    Definition:
+     - We use to these to group related logic of different routes into a single class
+     - By default controllers are stored in app/Http/Controllers/Controller.php
+    
+
+    Creating a new controller:
+     - We can use sail artisan cli to create a new controller:
+       ❯ sail artisan make:controller controllerName
+     - In our Controllers directory we will have this new php file with a 
+       boiler template code:
+       - namespace
+       - class that extends Controller
+    
+    Setting WelcomeController:
+     - We can add a method public e.g index() which returns our welcome view
+    
+    PassingController in our RouteHandler:
+     - Instead of an anonymous function as route handler function, we can pass
+       [class, "methodName"]
+       e.g [WelcomeController::class, "index"]
+
+
+
+
+
+
+-- console WSL
+❯ sail artisan make:controller WelcomeController
+  INFO  Controller [app/Http/Controllers/WelcomeController.php] created successfully.
+
+
+
+
+-- app/Http/Controllers/WelcomeController.php
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class WelcomeController extends Controller
+{
+    //
+    public function index(){
+        return view("welcome");
+    }
+}
+
+
+
+
+-- routes/web.php
+<?php
+
+use App\Http\Controllers\WelcomeController;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/',[WelcomeController::class, "index"] );

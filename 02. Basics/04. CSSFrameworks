@@ -1,0 +1,70 @@
+Adding CSS Frameworks
+    Definition:
+     - Like we have our folder app placed in our wsl on linux kernel, to install 
+       dependencies using "npm" is neccesary to have NodeJs
+    
+    Install NodeJs in linux:
+     - Like our VM is a linux, particulary Ubuntu we need to run:
+       ❯ curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - &&\
+       ❯ sudo apt-get install -y nodejs  
+     - Then we can install any css framework/libraries
+
+    Talwind CSS:
+     - We need to install in our linux terminal using:
+       ❯ npm install -D tailwindcss postcss autoprefixer
+     - Then we can init to generate tailwin and postcss config files using:
+       ❯ npx tailwindcss init -p
+     - We add our paths to the tailwind config file(paths of our markup files)
+     - We add the tailwind directives to ./resources/css/app.css file.
+     - Start our build process using:
+       ❯ npm run dev
+       This will generate our build process  but for development
+       
+    Link app.css to our html:
+     - We need to link, we can get this by using:
+       @vite("resources/css/app.css")
+
+
+
+-- tailwind.config.js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+    content: [
+        "./resources/**/*.blade.php",
+        "./resources/**/*.js",
+        "./resources/**/*.vue",
+    ],
+    theme: {
+        extend: {},
+    },
+    plugins: [],
+};
+
+
+
+
+-- resources/css/app.css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+-- resources/views/home.blade.php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    
+    <title>Document</title>
+    @vite("resources/css/app.css")
+</head>
+<body>
+...
+...
+
+
+

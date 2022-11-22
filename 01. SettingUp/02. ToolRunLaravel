@@ -1,0 +1,40 @@
+Choosing the right tool
+    Definition:
+     - Options available to open and run our Laravel projects in our OS
+     - This is neccesary to set up our development environment in our local machine!
+
+    Options:
+     Local Apache Server:
+      Linux/MacOS:
+       - Is very easy just one command to install Apache server and then 
+         install: PHP, Composer, MySQL server
+      Windows:
+       - We need to install XAMPP or WAMP
+      Cons:
+       - Long process
+       - Multiple issues
+
+     Homestead Vagrant box:
+      Any OS:
+       - Official prepackaged Vangrant box, provides a development environment
+       - Not require install PHP, webserver and any other in local machine
+       - Rund on any OS
+      Cons:
+       - Needs virtual box
+       - Needs a lot of system resources
+
+     Sail(with Docker):
+      Any OS:
+       - Builtin solution by Laravel that uses Docker
+       - So we only need to install Docker
+       - Very easy to started with even if we don't know Docker
+       - Official wasy of installing Laravel specified in the documentation
+      
+     Laravel Valet
+      - Only available on MacOS
+      
+     Laragon:
+      - Only available on Windows
+    
+     
+    

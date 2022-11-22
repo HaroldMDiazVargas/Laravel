@@ -1,0 +1,54 @@
+Deal with variables route-view
+    Definition:
+     - We can pass variable from our route to the view
+    
+    Passing variables to our view from our route:
+     - When we call the view() as second arg we can pass in [] the name of a 
+       variable
+       e.g view("home", ["name" => "Harold Diaz"])
+    
+    Display variables in our view:
+     Using native php syntax:
+      - We just use <?php tag and use "echo" to display our variable 
+        e.g <?php echo $varName ?>
+     Using blade syntax:
+      - blade provides us more useful and easier way by using {{}}
+        e.g {{ $varName }}
+
+
+
+
+-- routes/web.php
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/home', function () {
+    return view("home", ["name" => "Harold Diaz"]);
+});
+
+
+
+
+
+
+
+-- resources/views/home.blade.php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Home page {{ $name }} </h1>   
+    
+
+</body>
+</html>

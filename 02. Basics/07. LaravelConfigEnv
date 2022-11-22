@@ -1,0 +1,36 @@
+Laravel Env Config
+    Definition:
+     - Every app needs different values needs to be access through different apps:
+       - app name
+       - credentials
+       - database url
+       - ...
+    
+    .env file:
+     - This is added by Laravel in root of app
+     - This has variables as:
+       - APP_NAME
+       - APP_ENV
+       - APP_KEY
+       - APP_DEBUG
+       - APP_URL=http://localhost ()
+       - ...
+     - This file is part of .gitignore for security reasons, and every person in our 
+       team will have different set of config values
+
+    .env.example:
+     - This is shared with our collaborators as a template to re-use by all members
+
+    config/:
+     - In this folder we catch the values from .env file
+     - Here we have several files, where we use:
+       env("keyName", "valueAsDefault")
+       This means:
+       - If keyName is false and doesn't contain a value, it will take the default value
+     - In all this files the purpose is to export names we used to catch through our app
+
+    Access config variables values in our markup:
+     - We can access using config() and passing the variable we want to retrieve:
+       e.g config("fileName.varName")
+       e.g <title> {{ config("app.name") }}</title>
+    

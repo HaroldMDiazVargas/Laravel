@@ -1,0 +1,110 @@
+Sail with Docker
+    We will use the official and recommendend option
+
+
+    Docker installation:
+
+     WSL:
+      - We need to enable on this feature on windows before install Docker
+      - This Enables Windows Subsystem for Linux(WSL); this is a linux kernel
+        Allows us to run Linux programs natively in windows
+      - Open terminal as Admin and run ❯  wsl --install
+        - Restart the system:
+          - create username and password
+
+     Hypervisor:
+      - This is a tool that allows us to run multiple Virtual Machines on a physical 
+        machine. This tool allows us to create and manage these multiple Virtual Machines
+      - Virtual Machines are just abstraction of a machine
+      - There many Hypervisors:
+        - VirtualBox(cross)
+        - VMware(cross)
+        - Hyper-v(Only for windows)
+      Enable Hyper-v for windows:
+       windows 10 Pro - Educational - Enterpraise:
+        - Search for "enable or disable features windows"
+        - Enable Hyper-v platform of windows
+        - Click on Accept!
+       windows 10 Home:
+        - We can't do this by the official microsoft website
+        - There's a method to enable this, but first we need to check if we have 
+          virtualization activated in our pc, if not we must activate it first!
+        - Then we:
+          - Take code at the end of this file and put in a file called hyper-v.bat
+          - Execute as Admin
+          - Restart the pc and check if we have Hyper-v installed!
+        
+
+     Docker:
+      - We need to download docker(Docker desktop) installer .exe
+      - We run that and follow steps
+      - Our current session will be closed and restarted and then 
+        we can see that Docker will start!
+
+     Check installation on our local machine:
+      - On temrinal run:
+        docker version
+    
+     Check installation on our subsystem linux:
+      - We must check that in docker settings:
+        - General => Use the WSL 2 based engine [Checked]
+        - Resources/WSLIntegration => Enable integration Ubuntu[Checked]
+      - We open our terminal->ubuntu
+      - We run:
+        docker version
+
+-- Terminal as admin
+❯ wsl --install
+Instalando: Virtual Machine Platform
+Se ha instalado Virtual Machine Platform.
+Instalando: Windows Subsystem for Linux
+Se ha instalado Windows Subsystem for Linux.
+Descargando: WSL Kernel
+Instalando: WSL Kernel
+Se ha instalado WSL Kernel.
+Descargando: Ubuntu
+La operación solicitada se realizó correctamente. Los cambios se aplicarán una vez que 
+se reinicie el sistema.
+
+
+-- hyper-v.bat file
+pushd "%~dp0"
+dir /b %SystemRoot%\servicing\Packages\*Hyper-V*.mum >hyper-v.txt
+for /f %%i in ('findstr /i . hyper-v.txt 2^>nul') do dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"
+del hyper-v.txt
+Dism /online /enable-feature /featurename:Microsoft-Hyper-V -All /LimitAccess /ALL
+pause
+
+
+
+-- Terminal check docker
+❯ docker version
+Client:
+ Cloud integration: v1.0.29
+ Version:           20.10.21
+ API version:       1.41
+ Go version:        go1.18.7
+ Git commit:        baeda1f
+ Built:             Tue Oct 25 18:08:16 2022
+ OS/Arch:           windows/amd64
+ Context:           default
+ Experimental:      true
+
+Server: Docker Desktop 4.14.1 (91661)
+ Engine:
+  Version:          20.10.21
+  API version:      1.41 (minimum version 1.12)
+  Go version:       go1.18.7
+  Git commit:       3056208
+  Built:            Tue Oct 25 18:00:19 2022
+  OS/Arch:          linux/amd64
+  Experimental:     false
+ containerd:
+  Version:          1.6.9
+  GitCommit:        1c90a442489720eec95342e1789ee8a5e1b9536f
+ runc:
+  Version:          1.1.4
+  GitCommit:        v1.1.4-0-g5fd4c4d
+ docker-init:
+  Version:          0.19.0
+  GitCommit:        de40ad0

@@ -1,0 +1,70 @@
+First Laravel App
+
+    Creating app:
+     1. We create a new folder in our linux subsystem 
+     2. Once in the folder, we can run:
+       curl -s https://laravel.build/appName | bash
+       - This may takes several minutes.
+       - This will create our Laravel app in a folder with the name of our app,
+       - Will install Sail and build Sail's app container on our local machine
+       
+
+
+    Running our Laravel app:
+     1. We head over to our project folder
+     2. Run:
+        ❯ ./vendor/bin/sail up
+        - This will start Laravel Sail
+        - Laravel Sail provides a simple CLI interface for interactiwh with 
+          Laravel's default Docker configuration
+     Notes: In case we run our laravel app we can get error maybe for PORT conflicts
+            Usually MySQL takes 3306, so is better stop this service before run our
+            Laravel app!
+     3. View our app: http://localhost/
+    
+
+
+    Shell Alias our sail command:
+     - We have seen that to run Laravel Sail we need to run a weird command
+     - Instead we can configurate an alias to make this easier:
+       1. Open our bash using vim editor:
+          ❯ vim ~/.bashrc (RECOMMENDED)
+          ❯ vim ~/.zshrc
+          Can be whatever of both
+       2. Paste the next command and save(Esc + :wq):
+          ❯ alias sail up='[ -f sail ] && sh sail || sh vendor/bin/sail'
+       3. Source the file to allow the alias takes effects
+          ❯ source ~/.bashrc
+       4. Restart terminal
+       5. Head over project folder and run
+         ❯ sail commandName
+         ❯ sail up => This will execute our laravel app
+    
+    sail artisan:
+     - This is a CLI interface provided by Laravel
+     - To see all list of artisan commnads
+       ❯ sail artisan list
+       Some useful we will use:
+       - migrate
+       - make:controler
+
+
+
+-- console
+diaz@DESKTOP-2KJVAI1:~/apps/first-app$ sail up
+[+] Running 6/0
+ ⠿ Container first-app-redis-1         Running                                              0.0s
+ ⠿ Container first-app-mailhog-1       Running                                              0.0s
+ ⠿ Container first-app-mysql-1         Running                                              0.0s
+ ⠿ Container first-app-selenium-1      Running                                              0.0s
+ ⠿ Container first-app-meilisearch-1   Running                                              0.0s
+ ⠿ Container first-app-laravel.test-1  Running                                              0.0s
+Attaching to first-app-laravel.test-1, first-app-mailhog-1, first-app-meilisearch-1, first-app-mysql-1, first-app-redis-1, first-app-selenium-1
+first-app-meilisearch-1   | [2022-11-22T18:40:42Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000180
+first-app-mailhog-1       | [APIv1] KEEPALIVE /api/v1/events
+first-app-meilisearch-1   | [2022-11-22T18:41:18Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000880
+first-app-laravel.test-1  |   2022-11-22 18:41:18 ................................................... ~ 1s
+first-app-laravel.test-1  |   2022-11-22 18:41:19 ................................................... ~ 2s
+first-app-meilisearch-1   | [2022-11-22T18:41:55Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000122
+first-app-mailhog-1       | [APIv1] KEEPALIVE /api/v1/events
+first-app-meilisearch-1   | [2022-11-22T18:42:27Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000192
